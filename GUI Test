@@ -1,5 +1,20 @@
 import tkinter
 from tkinter import *
+from tkinter import ttk
+
+def berechnen():
+    teil1= float(punkte1.get())
+    teil2= float(punkte2.get())
+    teil3= float(punkte3.get())
+    teil4= float(punkte4.get())
+
+    ergebnis= teil1 + teil2 + teil3 + teil4
+    labelErgebnis.config(text=str(ergebnis))
+
+
+
+
+
 
 
 
@@ -8,30 +23,64 @@ mainwindow.title('Notenberechnung')
 mainwindow.geometry("600x600")
 mainwindow.resizable(0, 0)
 
+#TabControl
+tabControl = ttk.Notebook(mainwindow)
+
+tab1= Frame(tabControl, width=600, height=600)
+tab2= Frame(tabControl, width=600, height=600)
+
+tabControl.add(tab1, text='Praesentation')
+tabControl.add(tab2, text='Gespraech')
+
+tabControl.place(x=0, y=0)
+
 #Button
-berechnenButton = Button(master=mainwindow, borderwidth=0, bg='black')
+berechnenButton = Button(tab1, borderwidth=0, bg='black', command=berechnen)
 berechnenButton.place(x=180, y=540, height=30, width=40)
-exitButton = Button(master=mainwindow, borderwidth=0, bg='white', text='Exit', command=mainwindow.destroy)
-exitButton.place(x=350, y=10, height='30', width='40')
+exitButton = Button(tab1, borderwidth=0, bg='white', text='Exit', command=mainwindow.destroy)
+exitButton.place(x=550, y=10, height='30', width='40')
+
+
 
 #Eingabe
-punkte1 = Entry(master=mainwindow,text='', bg='white', fg="black")
-punkte1.place(x=100, y=100, height=35, width=35)
+punkte1 = Entry(tab1,text='', bg='white', fg="black")
+punkte1.place(x=200, y=60, height=35, width=35)
 
-punkte2 = Entry(master=mainwindow,text='', bg='white', fg="black")
-punkte2.place(x=100, y=250, height=35, width=35)
+punkte2 = Entry(tab1,text='', bg='white', fg="black")
+punkte2.place(x=200, y=180, height=35, width=35)
 
-punkte3 = Entry(master=mainwindow,text='', bg='white', fg="black")
-punkte3.place(x=100, y=350, height=35, width=35)
+punkte3 = Entry(tab1,text='', bg='white', fg="black")
+punkte3.place(x=200, y=280, height=35, width=35)
+
+punkte4 = Entry(tab1,text='', bg='white', fg="black")
+punkte4.place(x=200, y=380, height=35, width=35)
+
+
 
 #Gewichtung
-prozent1 = Label(master=mainwindow, text='10%', bg='white', fg='black')
-prozent1.place(x=100, y=10, height='35', width=35)
-prozent2 = Label(master=mainwindow, text='30%', bg='white', fg='black')
-prozent2.place(x=100, y=200, height='35', width=35)
-prozent3 = Label(master=mainwindow, text='30%', bg='white', fg='black')
-prozent3.place(x=100, y=300, height='35', width=35)
+prozent1 = Label(tab1, text='10%', bg='white', fg='black')
+prozent1.place(x=200, y=10, height='35', width=35)
+prozent2 = Label(tab1, text='30%', bg='white', fg='black')
+prozent2.place(x=200, y=120, height='35', width=35)
+prozent3 = Label(tab1, text='45%', bg='white', fg='black')
+prozent3.place(x=200, y=220, height='35', width=35)
+prozent4 = Label(tab1, text='15%', bg='white', fg='black')
+prozent4.place(x=200, y=320, height='35', width=35)
 
 
+#Kriterien
+kriterien1 = Label(tab1, text='Gestaltung Projektbericht\n(aeussere Form)', bg='white', fg='black',anchor="nw", padx=5, justify='left' )
+kriterien1.place(x=10, y=40, height='35', width='180')
+kriterien2 = Label(tab1, text='Beschreibung/Konkretisierung\ndes Auftrages, der Ausgangssituation und des Projektumfelds', bg='white', fg='black',anchor="nw", padx=5, justify='left' )
+kriterien2.place(x=10, y=120, height='35', width='180')
+kriterien3 = Label(tab1, text='Beschreibung der\nProzessschritte', bg='white', fg='black',anchor="nw", padx=5, justify='left' )
+kriterien3.place(x=10, y=220, height='35', width='180')
+kriterien4 = Label(tab1, text='Darstellung der Projektergebnisse und praxisbezogene', bg='white', fg='black',anchor="nw", padx=5, justify='left' )
+kriterien4.place(x=10, y=320, height='35', width='180')
+
+
+#Ergebnis
+labelErgebnis = Label(tab1, text='', bg='white', fg='black',)
+labelErgebnis.place(x=300, y=550, height=35, width=50)
 #Start
 mainwindow.mainloop()
