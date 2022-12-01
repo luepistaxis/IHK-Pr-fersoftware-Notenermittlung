@@ -86,7 +86,7 @@ uAP1Label.place(x=0, y=30, height=30, width=220)
 
 #Beschreibung
 ap1Label = Label(tab1, text='Einrichten eines IT-\ngestützten Arbeitsplatz',justify='center', borderwidth=1, relief='solid')
-ap1Label.place(x=10, y=70, height=30, width=200)
+ap1Label.place(x=10, y=100, height=30, width=200)
 
 #Gewichtung
 apProzentL = Label(tab1, text='20%', borderwidth=1, relief='solid')
@@ -94,11 +94,11 @@ apProzentL.place(x=220, y=30, height=30, width=30)
 
 #Eingabe
 ap1Eintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
-ap1Eintrag.place(x=10, y=110, height=30, width=200)
+ap1Eintrag.place(x=10, y=140, height=30, width=200)
 
 #Umrechnung
 ap1Umrechnung = Label(tab1,text='', justify='center', borderwidth=1, relief='solid')
-ap1Umrechnung.place(x=220, y=110, height=30, width= 30)
+ap1Umrechnung.place(x=220, y=140, height=30, width= 30)
 
 #---------------------------------------------------------------------------------------
 
@@ -123,54 +123,62 @@ uGewichtung2.place(x=970, y=30, height=30, width=30)
 #Schriftliche Prüfung Teil 2
 #Beschreibung
 ap2Planen = Label(tab1, text='Planen eines Softwareprojekts', borderwidth=1, relief='solid')
-ap2Planen.place(x=260, y=70, height=30, width=200)
+ap2Planen.place(x=260, y=100, height=30, width=200)
 
 ap2Entw = Label(tab1, text='Entwicklung und Umsetzung \nvon Algorithmen', borderwidth=1, relief='solid')
-ap2Entw.place(x=260, y=150, height=30, width=200)
+ap2Entw.place(x=260, y=180, height=30, width=200)
 
 ap2Wirts = Label(tab1, text='Wirtschafts- und Sozialkunde',borderwidth=1, relief='solid')
-ap2Wirts.place(x=260, y=230, height=30, width=200)
+ap2Wirts.place(x=260, y=260, height=30, width=200)
 
 #Gewichtung AP2
 ap2PlanProz = Label(tab1, text='10%', borderwidth=1, relief='solid')
-ap2PlanProz.place(x=470, y=70, height=30, width=30)
+ap2PlanProz.place(x=470, y=100, height=30, width=30)
 
 ap2EntwProz = Label(tab1, text='10%', borderwidth=1, relief='solid')
-ap2EntwProz.place(x=470, y=150, height=30, width=30 )
+ap2EntwProz.place(x=470, y=180, height=30, width=30 )
 
 ap2WirtsProz = Label(tab1, text='10%', borderwidth=1, relief='solid')
-ap2WirtsProz.place(x=470, y=230, height=30, width=30)
+ap2WirtsProz.place(x=470, y=260, height=30, width=30)
 
 
 
 #Eingabe AP2
 planEintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
-planEintrag.place(x=260, y=110, height=30, width=200)
+planEintrag.place(x=260, y=140, height=30, width=200)
 entwEintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
-entwEintrag.place(x=260, y=190, height=30, width=200)
+entwEintrag.place(x=260, y=220, height=30, width=200)
 wirtsEintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
-wirtsEintrag.place(x=260, y=270, height=30, width=200)
+wirtsEintrag.place(x=260, y=300, height=30, width=200)
 
 
 
 
 #Umrechnung AP2 
 planUmrechnung = Label(tab1, text='', borderwidth=1, relief='solid')
-planUmrechnung.place(x=470, y=110, height=30, width=30)
+planUmrechnung.place(x=470, y=100, height=30, width=30)
 entwUmrechnung = Label(tab1, text='', borderwidth=1, relief='solid')
-entwUmrechnung.place(x=470, y=190, height=30, width=30)
+entwUmrechnung.place(x=470, y=180, height=30, width=30)
 wirtsUmrechung = Label(tab1, text='', borderwidth=1, relief='solid')
-wirtsUmrechung.place(x=470, y=270, height=30, width=30)
+wirtsUmrechung.place(x=470, y=260, height=30, width=30)
 
 #----------------------------------------------------------------------------------------------------------------
 
 #Projektarbeit & Dokumentation
+
+#2 Aufteilung
+
+uDoku = Label(tab1, text='Dokumentation', borderwidth=1, relief='solid')
+uDoku.place(x=500, y=60, height=30, width=220)
+dokuProzent = Label(tab1, text='50%', borderwidth=1, relief='solid')
+dokuProzent.place(x=720, y=60, height=30, width=30)
+
+
 #Beschreibung 
 
-dokuBeschreibung = Label(tab1, text='Dokumentation')
-dokuBeschreibung.place()
-dokuProzentL = Label(tab1, text='50%')
-dokuProzentL.place()
+dokuGest= Label(tab1, text='Gestaltung Projektbericht \n(aeussere Form)', borderwidth=1, relief='solid')
+dokuGest.place(x=510, y=100, height=30, width=200)
+
 
 
 dokuPart1 = Label(tab1, text='Gestaltung Projektbericht\n(aeussere Form)', bg='white', fg='black',anchor="nw", padx=5, justify='left' )
@@ -274,9 +282,13 @@ prae3 = Label(tab1, text='Praesentationstechnik', bg='white', fg='black',anchor=
 prae3.place()
 
 #-----------------------------------------------------------------------------------------------------------------
-#ErgebnisTeil1
-labelErgebnis = Label(tab1, text='', bg='white', fg='black',)
-labelErgebnis.place()
+#Ergebnis Schriftliche Prüfungen Gesamt
+schriftlErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
+schriftlErgebnis.place(x=260, y=500, height=30, width=30 )
+
+schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid')
+schriftlGesamtB.place(x=10, y=500, height=30, width=250)
+
 
 #ErgebnisTeil2
 labelErgebnis2 = Label(tab1, text='', bg='white', fg='black',)
