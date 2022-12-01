@@ -13,7 +13,12 @@ def praesBerechnen():
     return
 
 def schriftlBerechnen():
-    return
+    ergebnisAP1= float(ap1Eintrag.get()) * 0.2
+    ergebisPlanEintrag = float(planEintrag.get()) * 0.1
+    ergebnisEntwEintrag = float(entwEintrag.get()) * 0.1
+    ergebnisWirtsEintrag = float(wirtsEintrag.get()) * 0.1
+    ergebnisSchriftl = ergebnisAP1 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag
+    schriftlErgebnis.config(text=str(ergebnisSchriftl))
 
 def berechnen():
     teil1= float(punkte1.get())
