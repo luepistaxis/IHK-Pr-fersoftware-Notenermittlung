@@ -6,7 +6,7 @@ from tkinter import ttk
 
 
 def schriftlBerechnen():
-    ergebnisAP1= float(ap1Eintrag.get()) * 0.2
+    ergebnisAP1 = float(ap1Eintrag.get()) * 0.2
     ergebisPlanEintrag = float(planEintrag.get()) * 0.1
     ergebnisEntwEintrag = float(entwEintrag.get()) * 0.1
     ergebnisWirtsEintrag = float(wirtsEintrag.get()) * 0.1
@@ -110,8 +110,10 @@ apProzentL = Label(tab1, text='20%', borderwidth=1, relief='solid')
 apProzentL.place(x=220, y=30, height=30, width=30)
 
 #Eingabe
-ap1Eintrag = Entry(tab1, justify='center', borderwidth=1, relief='solid', fg='black', bg='white')
-ap1Eintrag.insert(0, "0.0")
+
+ap1Eintrag = Entry(tab1, borderwidth=1, relief='solid')
+ap1Eintrag.insert(0,'0')
+
 ap1Eintrag.place(x=10, y=140, height=30, width=200)
 
 #Umrechnung
@@ -162,11 +164,16 @@ ap2WirtsProz.place(x=470, y=260, height=30, width=30)
 
 
 #Eingabe AP2
-planEintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
+planEintrag = Entry(tab1, borderwidth=1, relief='solid')
+planEintrag.insert(0,'0')
 planEintrag.place(x=260, y=140, height=30, width=200)
-entwEintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
+
+entwEintrag = Entry(tab1, borderwidth=1, relief='solid')
+entwEintrag.insert(0,'0')
 entwEintrag.place(x=260, y=220, height=30, width=200)
-wirtsEintrag = Entry(tab1, text='', borderwidth=1, relief='solid')
+
+wirtsEintrag = Entry(tab1, borderwidth=1, relief='solid')
+wirtsEintrag.insert(0,'0')
 wirtsEintrag.place(x=260, y=300, height=30, width=200)
 
 
@@ -286,6 +293,8 @@ planUmsErgebnis.place(x=820, y=460, height=30, width=30)
 planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77')
 planUmsGesamtB.place(x=510, y=460, height=30, width=300)
 
+schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', command=schriftlBerechnen)
+schriftlGesamtB.place(x=10, y=500, height=30, width=250)
 
 
 #ErgebnisTeil2
