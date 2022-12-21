@@ -31,14 +31,14 @@ def berechnen():
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
-mainwindow.geometry("1040x1000")
+mainwindow.geometry("1040x710")
 mainwindow.resizable(0, 0)
 
 #TabControl
 tabControl = ttk.Notebook(mainwindow)
 
-tab1= Frame(tabControl, width=1040, height=1000)
-tab2= Frame(tabControl, width=1040, height=1000)
+tab1= Frame(tabControl, width=1040, height=710)
+tab2= Frame(tabControl, width=1040, height=710)
 
 tabControl.add(tab1, text='Berechnung')
 tabControl.add(tab2, text='PDF Vorlage')
@@ -48,22 +48,25 @@ tabControl.place(x=0, y=0)
 #------------------------------------------------------------------------------------------------------------------
 #Format verschönener mit Boxen
 form1AP1 = Label(tab1, borderwidth=1, relief='solid')
-form1AP1.place(x=0, y=60, height=390, width=250)
+form1AP1.place(x=0, y=60, height=520, width=250)
 
 form2AP2 = Label(tab1, borderwidth=1, relief='solid')
-form2AP2.place(x=250, y=60, height=390, width=250)
+form2AP2.place(x=250, y=60, height=520, width=250)
 
 form3AP2 = Label(tab1, borderwidth=1, relief='solid')
-form3AP2.place(x=500, y=90, height=360, width=250)
+form3AP2.place(x=500, y=90, height=490, width=250)
 
 form4AP2 = Label(tab1, borderwidth=1, relief='solid')
-form4AP2.place(x=750, y=90, height=360, width=250)
+form4AP2.place(x=750, y=90, height=490, width=250)
 
 form5Ges1 = Label(tab1, borderwidth=1, relief='solid')
-form5Ges1.place(x=0, y=450, height=50, width=500)
+form5Ges1.place(x=0, y=580, height=50, width=500)
 
 form6Ges2 = Label(tab1, borderwidth=1, relief='solid')
-form6Ges2.place(x=500, y=450, height=50, width=500)
+form6Ges2.place(x=500, y=580, height=50, width=500)
+
+form7End = Label(tab1, borderwidth=1, relief='solid')
+form7End.place(x=0, y=630, height=50, width=1000)
 #---------------------------------------------------------------------------------------------------------------
 
 #Button Endergebnis berechnen
@@ -209,44 +212,73 @@ dokuGest= Label(tab1, text='Gestaltung Projektbericht \n(aeussere Form)', border
 dokuGest.place(x=510, y=100, height=30, width=200)
 
 dokuKonkr = Label(tab1, text='Konkretisierung des Auftrages, der \nAusgangssituation & des Projektumfelds', borderwidth=1, relief='solid')
-dokuKonkr.place(x=510, y=180, height=30, width=200)
+dokuKonkr.place(x=510, y=220, height=30, width=200)
 dokuBeschr = Label(tab1, text='Beschreibung der\nProzessschritte', borderwidth=1, relief='solid')
-dokuBeschr.place(x=510, y=260, height=30, width=200)
+dokuBeschr.place(x=510, y=340, height=30, width=200)
 dokuDars = Label(tab1, text='Darstellung der Projektergebnisse \nund praxisbezogene', borderwidth=1, relief='solid')
-dokuDars.place(x=510, y=340, height=30, width=200)
+dokuDars.place(x=510, y=460, height=30, width=200)
 
 #Eingabe
 gestEintrag = Entry(tab1,text='', borderwidth=1, relief='solid')
 gestEintrag.place(x=510, y=140, height=30, width=200)
 
 dPunkte2 = Entry(tab1,text='', borderwidth=1, relief='solid')
-dPunkte2.place(x=510, y=220, height=30, width=200)
+dPunkte2.place(x=510, y=260, height=30, width=200)
 
 dPunkte3 = Entry(tab1,text='', borderwidth=1, relief='solid')
-dPunkte3.place(x=510, y=300, height=30, width=200)
+dPunkte3.place(x=510, y=380, height=30, width=200)
 
 dPunkte4 = Entry(tab1,text='', borderwidth=1, relief='solid')
-dPunkte4.place(x=510, y=380, height=30, width=200)
+dPunkte4.place(x=510, y=500, height=30, width=200)
+
+#Kommentar Dokumentation
+gestaltKomment = Entry(tab1, text='', borderwidth=1, relief='solid')
+gestaltKomment.place(x=510, y=180, height=30, width=200)
+
+konkretKomment = Entry(tab1, text='', borderwidth=1, relief='solid')
+konkretKomment.place(x=510, y=300, height=30, width=200)
+
+beschreibKomment = Entry(tab1, text='', borderwidth=1, relief='solid')
+beschreibKomment.place(x=510, y=420, height=30, width=200)
+
+darstKomment = Entry(tab1, text='', borderwidth=1, relief='solid')
+darstKomment.place(x=510, y=540, height=30, width=200)
+
+#Kommentar Dokumentation Punkte
+
+gestKoPunkte = Entry(tab1, text='', borderwidth=1, relief='solid')
+gestKoPunkte.place(x=720, y=180, height=30, width=30)
+
+konkKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid')
+konkKomPunkte.place(x=720, y=300, height=30, width=30)
+
+beschKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid')
+beschKomPunkte.place(x=720, y=420, height=30, width=30)
+
+darstKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid')
+darstKomPunkte.place(x=720, y=540, height=30, width=30)
+
+
 
 #Gewichtung
 dProzent1 = Label(tab1, text='10%', borderwidth=1, relief='solid')
 dProzent1.place(x=720, y=100, height=30, width=30)
 dProzent2 = Label(tab1, text='30%', borderwidth=1, relief='solid')
-dProzent2.place(x=720, y=180, height=30, width=30)
+dProzent2.place(x=720, y=220, height=30, width=30)
 dProzent3 = Label(tab1, text='45%', borderwidth=1, relief='solid')
-dProzent3.place(x=720, y=260, height=30, width=30)
+dProzent3.place(x=720, y=340, height=30, width=30)
 dProzent4 = Label(tab1, text='15%', borderwidth=1, relief='solid')
-dProzent4.place(x=720, y=340, height=30, width=30)
+dProzent4.place(x=720, y=460, height=30, width=30)
 
 #Umrechnung
 gestUmrechnung= Label(tab1, text='', borderwidth=1, relief='solid')
 gestUmrechnung.place(x=720, y=140, height=30, width=30)
 konkrUmrechnung= Label(tab1, text='', borderwidth=1, relief='solid')
-konkrUmrechnung.place(x=720, y=220, height=30, width=30)
+konkrUmrechnung.place(x=720, y=260, height=30, width=30)
 beschrUmrechnung= Label(tab1, text='', borderwidth=1, relief='solid')
-beschrUmrechnung.place(x=720, y=300, height=30, width=30)
+beschrUmrechnung.place(x=720, y=380, height=30, width=30)
 darsUmrechnung= Label(tab1, text='', borderwidth=1, relief='solid')
-darsUmrechnung.place(x=720, y=380, height=30, width=30)
+darsUmrechnung.place(x=720, y=500, height=30, width=30)
 
 
 
@@ -257,7 +289,7 @@ aufbBeschreibung = Label(tab1, text='Aufbau und inhaltliche Struktur', borderwid
 aufbBeschreibung.place(x=760, y=100, height=30, width=200)
 
 praeTech = Label(tab1, text='Praesentationstechnik', borderwidth=1, relief='solid')
-praeTech.place(x=760, y=180, height=30, width=200)
+praeTech.place(x=760, y=220, height=30, width=200)
 
 #Eingabe
 
@@ -265,49 +297,59 @@ aufbEingabe = Entry(tab1, text='', justify='center', borderwidth=1, relief='soli
 aufbEingabe.place(x=760, y=140, height=30, width=200)
 
 praePunkte3 = Entry(tab1, text='', borderwidth=1, relief='solid')
-praePunkte3.place(x=760, y=220, height=30, width=200)
+praePunkte3.place(x=760, y=260, height=30, width=200)
+
+#Kommentar Präsentation und Fachgespräch
+aufbKomment = Entry(tab1, text='', borderwidth=1, relief='solid')
+aufbKomment.place(x=760, y=180, height=30, width=200)
+
+praeTechKomment = Entry(tab1, text='', borderwidth=1, relief='solid')
+praeTechKomment.place(x=760, y=300, height=30, width=200)
+
+#Kommentar Präsentation und Fachgespräch Punkte
+aufbKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid')
+aufbKomPunkte.place(x=970, y=180, height=30, width=30)
+
+praeKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid')
+praeKomPunkte.place(x=970, y=300, height=30, width=30)
+
 
 #Gewichtung
 aufbProzL = Label(tab1, text='40%', borderwidth=1, relief='solid')
 aufbProzL.place(x=970, y=100, height=30, width=30)
 praeProz = Label(tab1, text='60%', borderwidth=1, relief='solid')
-praeProz.place(x=970, y=180, height=30, width=30)
+praeProz.place(x=970, y=220, height=30, width=30)
 
 #Umrechnung
 aufbUmrechnung = Label(tab1, text='', borderwidth=1, relief='solid')
 aufbUmrechnung.place(x=970, y=140, height=30, width=30)
 praeUmrechnung = Label(tab1, text='', borderwidth=1, relief='solid')
-praeUmrechnung.place(x=970, y=220, height=30, width=30)
+praeUmrechnung.place(x=970, y=260, height=30, width=30)
 
 #-----------------------------------------------------------------------------------------------------------------
 #Ergebnis Schriftliche Prüfungen Gesamt
 schriftlErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
-schriftlErgebnis.place(x=320, y=510, height=30, width=30 )
+schriftlErgebnis.place(x=320, y=590, height=30, width=30 )
 
 schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command=schriftlBerechnen)
-schriftlGesamtB.place(x=10, y=510, height=30, width=300)
+schriftlGesamtB.place(x=10, y=590, height=30, width=300)
 
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
-planUmsErgebnis.place(x=820, y=510, height=30, width=30)
+planUmsErgebnis.place(x=820, y=590, height=30, width=30)
 
 planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77')
-planUmsGesamtB.place(x=510, y=510, height=30, width=300)
+planUmsGesamtB.place(x=510, y=590, height=30, width=300)
 
 #Endnote
 
 endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77')
-endNoteGesamtB.place(x=10, y=560, height=30, width=250)
+endNoteGesamtB.place(x=140, y=640, height=30, width=250)
 
 endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
-endNoteErgebnis.place(x=270, y=560, height=30, width=250)
+endNoteErgebnis.place(x=400, y=640, height=30, width=250)
 
 bestandenMeldung = Label(tab1,  text='', borderwidth=1, relief='solid', )
-bestandenMeldung.place(x=530, y=560, height=30, width=250)
-
-
-#ErgebnisTeil2
-labelErgebnis2 = Label(tab1, text='', bg='white', fg='black',)
-labelErgebnis2.place()
+bestandenMeldung.place(x=660, y=640, height=30, width=250)
 
 #Start
 mainwindow.mainloop()
