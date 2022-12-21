@@ -10,17 +10,38 @@ def schriftlBerechnen():
     ergebisPlanEintrag = float(planEintrag.get()) * 0.1
     ergebnisEntwEintrag = float(entwEintrag.get()) * 0.1
     ergebnisWirtsEintrag = float(wirtsEintrag.get()) * 0.1
-    ergebnisSchriftl = ergebnisAP1 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag
-    schriftlErgebnis.config(text=str(ergebnisSchriftl))
+    ergebnisSchriftl = 2 * (ergebnisAP1 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag)
+    schriftlErgebnis.config(text=str(format(ergebnisSchriftl, '.1f')))
+    
+    return ergebnisSchriftl
 
-def berechnen():
-    teil1= float(punkte1.get())
-    teil2= float(punkte2.get())
-    teil3= float(punkte3.get())
-    teil4= float(punkte4.get())
 
-    ergebnis= teil1 + teil2 + teil3 + teil4
-    labelErgebnis.config(text=str(ergebnis))
+
+def projektBerechnen():
+    ergebnisGestaltung = float(gestEintrag.get()) * 0.1
+    ergebnisGestaltungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
+    ergebnisKonkretisierung = float(dPunkte2.get()) * 0.3
+    ergebnisKonkretisierungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
+    ergebnisBeschreibung = float(dPunkte3.get()) * 0.45
+    ergebnisBeschreibungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
+    ergebnisDarstellung = float(dPunkte4.get()) * 0.15
+    ergebnisDarstellungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
+    zwischenErgebnisDokumentation = ergebnisGestaltung + ergebnisGestaltungKommentar + ergebnisKonkretisierung + ergebnisKonkretisierungKommentar + ergebnisBeschreibung + ergebnisBeschreibungKommentar + ergebnisDarstellung + ergebnisDarstellungKommentar
+    
+    ergebnisAufbau = float(aufbEingabe.get()) * 0.4
+    ergebnisAufbauKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
+    ergebnisPraesentation = float(praePunkte3.get()) * 0.6
+    ergebnisPraesentationKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
+    zwischenErgebnisPraesentation = ergebnisAufbau + ergebnisAufbauKommentar + ergebnisPraesentation + ergebnisPraesentationKommentar
+
+    endergebnisProjekt = 1 * ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
+    planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
+    return endergebnisProjekt
+
+
+def Endnoteberechnen():
+    endnote = (schriftlBerechnen() * 0.5) + (projektBerechnen() * 0.5)
+    endNoteErgebnis.config(text=str(format(endnote, '.1f')))
 
 
 
@@ -31,7 +52,7 @@ def berechnen():
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
-mainwindow.geometry("1040x1000")
+mainwindow.geometry("1040x1000") 
 mainwindow.resizable(0, 0)
 
 #TabControl
@@ -67,7 +88,7 @@ form6Ges2.place(x=500, y=450, height=50, width=500)
 #---------------------------------------------------------------------------------------------------------------
 
 #Button Endergebnis berechnen
-endBerechnenButton = Button(tab1, borderwidth=0, command=berechnen, text="Ergebnis")
+endBerechnenButton = Button(tab1, borderwidth=0, text="Ergebnis")
 endBerechnenButton.place()
 
 #ButtonTeil1 AP1 berechnen
@@ -290,12 +311,12 @@ schriftlGesamtB.place(x=10, y=510, height=30, width=300)
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
 planUmsErgebnis.place(x=820, y=510, height=30, width=30)
 
-planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77')
+planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command = projektBerechnen)
 planUmsGesamtB.place(x=510, y=510, height=30, width=300)
 
 #Endnote
 
-endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77')
+endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=Endnoteberechnen)
 endNoteGesamtB.place(x=10, y=560, height=30, width=250)
 
 endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
