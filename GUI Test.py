@@ -70,13 +70,13 @@ def Endnoteberechnen():
         i+=1    
     print(i)
 
-    #Prüfen ob in Teil 2 kein Ergebnis ungenügend ist. Wenn ja -> nicht bestanden
+    #Prüfen ob in Teil 2 mindestens ein Ergebnis ungenügend ist. Wenn doch -> nicht bestanden
     #Prüfen ob in Teil 2 weniger als 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
     #Prüfen ob Teil 1 und 2 zusammen weniger als 50% erreichen. Wenn ja -> nicht bestanden
     #Prüfen ob weniger als 3 Prüfungsbereiche in Teil 2 >= 50% sind. Wenn ja -> nicht bestanden
     #Annahme: Prüfungsbereiche Teil 2 = Domkumentation, Präse und Fachgespräch, die 3 Theorieprüfungen
     bestehBedingungen = TRUE
-    if (float(planEintrag.get()) < 35 or float(entwEintrag.get()) < 35 or float(wirtsEintrag.get()) < 35 or ergebnisDokumentationPunkte < (400/100*35) or ergebnisPraesentationPunkte < (200/100*35)) or ergebnisTeil2Punkte < 450 or endnote < 50 or i < 3:
+    if (float(planEintrag.get()) < 30 or float(entwEintrag.get()) < 30 or float(wirtsEintrag.get()) < 30 or ergebnisDokumentationPunkte < (400/100*30) or ergebnisPraesentationPunkte < (200/100*30)) or ergebnisTeil2Punkte < 450 or endnote < 50 or i < 3:
         bestehBedingungen = FALSE
 
     if bestehBedingungen == TRUE: 
