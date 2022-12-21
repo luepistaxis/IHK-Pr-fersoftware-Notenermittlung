@@ -31,14 +31,14 @@ def berechnen():
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
-mainwindow.geometry("1040x600")
+mainwindow.geometry("1040x1000")
 mainwindow.resizable(0, 0)
 
 #TabControl
 tabControl = ttk.Notebook(mainwindow)
 
-tab1= Frame(tabControl, width=1040, height=600)
-tab2= Frame(tabControl, width=1040, height=600)
+tab1= Frame(tabControl, width=1040, height=1000)
+tab2= Frame(tabControl, width=1040, height=1000)
 
 tabControl.add(tab1, text='Berechnung')
 tabControl.add(tab2, text='PDF Vorlage')
@@ -282,19 +282,27 @@ praeUmrechnung.place(x=970, y=220, height=30, width=30)
 #-----------------------------------------------------------------------------------------------------------------
 #Ergebnis Schriftliche Prüfungen Gesamt
 schriftlErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
-schriftlErgebnis.place(x=320, y=460, height=30, width=30 )
+schriftlErgebnis.place(x=320, y=510, height=30, width=30 )
 
-schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77')
-schriftlGesamtB.place(x=10, y=460, height=30, width=300)
+schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command=schriftlBerechnen)
+schriftlGesamtB.place(x=10, y=510, height=30, width=300)
 
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
-planUmsErgebnis.place(x=820, y=460, height=30, width=30)
+planUmsErgebnis.place(x=820, y=510, height=30, width=30)
 
 planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77')
-planUmsGesamtB.place(x=510, y=460, height=30, width=300)
+planUmsGesamtB.place(x=510, y=510, height=30, width=300)
 
-schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', command=schriftlBerechnen)
-schriftlGesamtB.place(x=10, y=500, height=30, width=250)
+#Endnote
+
+endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77')
+endNoteGesamtB.place(x=10, y=560, height=30, width=250)
+
+endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid')
+endNoteErgebnis.place(x=270, y=560, height=30, width=250)
+
+bestandenMeldung = Label(tab1,  text='', borderwidth=1, relief='solid', )
+bestandenMeldung.place(x=530, y=560, height=30, width=250)
 
 
 #ErgebnisTeil2
