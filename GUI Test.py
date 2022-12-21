@@ -10,42 +10,81 @@ def schriftlBerechnen():
     ergebisPlanEintrag = float(planEintrag.get()) * 0.1
     ergebnisEntwEintrag = float(entwEintrag.get()) * 0.1
     ergebnisWirtsEintrag = float(wirtsEintrag.get()) * 0.1
+
+    #Ausgeabe: "ergebnisSchriftl = 2 *..." damit die Ausgabe widerspiegelt wie viele von 100% im Bereich der schriftlichen Prüfungen erreicht wurden
     ergebnisSchriftl = 2 * (ergebnisAP1 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag)
     schriftlErgebnis.config(text=str(format(ergebnisSchriftl, '.1f')))
-    
+
     return ergebnisSchriftl
 
 
 
 def projektBerechnen():
-    ergebnisGestaltung = float(gestEintrag.get()) * 0.1
-    ergebnisGestaltungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
-    ergebnisKonkretisierung = float(dPunkte2.get()) * 0.3
-    ergebnisKonkretisierungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
-    ergebnisBeschreibung = float(dPunkte3.get()) * 0.45
-    ergebnisBeschreibungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
-    ergebnisDarstellung = float(dPunkte4.get()) * 0.15
-    ergebnisDarstellungKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
-    zwischenErgebnisDokumentation = ergebnisGestaltung + ergebnisGestaltungKommentar + ergebnisKonkretisierung + ergebnisKonkretisierungKommentar + ergebnisBeschreibung + ergebnisBeschreibungKommentar + ergebnisDarstellung + ergebnisDarstellungKommentar
+    ergebnisGestaltung = (float(gestEintrag.get()) + float(gestKoPunkte.get())) * 0.1
+    ergebnisKonkretisierung = (float(dPunkte2.get()) + float(konkKomPunkte.get())) * 0.3
+    ergebnisBeschreibung = (float(dPunkte3.get()) + float(beschKomPunkte.get())) * 0.45
+    ergebnisDarstellung = (float(dPunkte4.get()) + float(darstKomPunkte.get())) * 0.15
+    zwischenErgebnisDokumentation = ergebnisGestaltung + ergebnisKonkretisierung + ergebnisBeschreibung + ergebnisDarstellung
     
-    ergebnisAufbau = float(aufbEingabe.get()) * 0.4
-    ergebnisAufbauKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
-    ergebnisPraesentation = float(praePunkte3.get()) * 0.6
-    ergebnisPraesentationKommentar = 0 #Kommentarfelder mit Formel befüllen sobald die Feldernamen bekannt sind
-    zwischenErgebnisPraesentation = ergebnisAufbau + ergebnisAufbauKommentar + ergebnisPraesentation + ergebnisPraesentationKommentar
+    ergebnisAufbau = (float(aufbEingabe.get()) + float(aufbKomPunkte.get())) * 0.4
+    ergebnisPraesentation = (float(praePunkte3.get()) + float(praeKomPunkte.get())) * 0.6
+    zwischenErgebnisPraesentation = ergebnisAufbau + ergebnisPraesentation
 
-    endergebnisProjekt = 1 * ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
+    endergebnisProjekt = ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
     planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
+
     return endergebnisProjekt
 
 
 def Endnoteberechnen():
-    endnote = (schriftlBerechnen() * 0.5) + (projektBerechnen() * 0.5)
+
+    #Gesamtpunkte AP2 schriftlicher teil
+    ergebnisSchriftlAP2Punkte = float(planEintrag.get()) + float(entwEintrag.get()) + float(wirtsEintrag.get())
+    #Geamtpunkte Dokumentation
+    ergebnisDokumentationPunkte = float(gestEintrag.get()) + float(gestKoPunkte.get()) + float(dPunkte2.get()) + float(konkKomPunkte.get()) + float(dPunkte3.get()) + float(beschKomPunkte.get()) + float(dPunkte4.get()) + float(darstKomPunkte.get())
+    #Gesamtpunkte Präsentation
+    ergebnisPraesentationPunkte = float(aufbEingabe.get()) + float(aufbKomPunkte.get()) + float(praePunkte3.get()) + float(praeKomPunkte.get())
+    #Gesamtpunkte Teil 2
+    ergebnisTeil2Punkte = ergebnisSchriftlAP2Punkte + ergebnisDokumentationPunkte + ergebnisPraesentationPunkte
+
+    #Prozente der AP2 schriftlichen Prüfungen
+    ergebisPlanEintrag = float(planEintrag.get()) * 0.1
+    ergebnisEntwEintrag = float(entwEintrag.get()) * 0.1
+    ergebnisWirtsEintrag = float(wirtsEintrag.get()) * 0.1
+
+    #Zusammensetzung der Endnote
+    endnote = (float(ap1Eintrag.get()) * 0.2) + (projektBerechnen() * 0.5 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag)
     endNoteErgebnis.config(text=str(format(endnote, '.1f')))
-    if endnote >= 50:
+
+    #Prüfen ob mindestens 3 Prüfungsbereiche in Teil 2 >= 50% sind (Für jeden Bereich mit größer 50% -> i++)
+    i = 0
+    if float(planEintrag.get()) >= 50:
+        i+=1
+    if float(entwEintrag.get()) >= 50:
+        i+=1
+    if float(wirtsEintrag.get()) >= 50:
+        i+=1
+    if ergebnisDokumentationPunkte >= 200:
+        i+=1
+    if ergebnisPraesentationPunkte >= 100:
+        i+=1    
+    print(i)
+
+    #Prüfen ob in Teil 2 kein Ergebnis ungenügend ist. Wenn ja -> nicht bestanden
+    #Prüfen ob in Teil 2 mindestens 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
+    #Prüfen ob Teil 1 und 2 zusammen mindestens 50% erreichen. Wenn ja -> nicht bestanden
+    #Prüfen ob mindestens 3 Prüfungsbereiche in Teil 2 >= 50% sind. Wenn ja -> nicht bestanden
+    #Annahme: Prüfungsbereiche Teil 2 = Domkumentation, Präse und Fachgespräch, die 3 Theorieprüfungen
+    bestehBedingungen = TRUE
+    if (float(planEintrag.get()) < 35 or float(entwEintrag.get()) < 35 or float(wirtsEintrag.get()) < 35 or ergebnisDokumentationPunkte < (400/100*35) or ergebnisPraesentationPunkte < (200/100*35)) or ergebnisTeil2Punkte < 450 or endnote < 50 or i < 3:
+        bestehBedingungen = FALSE
+
+    if bestehBedingungen == TRUE: 
         bestandenMeldung.config(text='Bestanden')
     else:
         bestandenMeldung.config(text='Nicht Bestanden')
+
+
 
 
 
