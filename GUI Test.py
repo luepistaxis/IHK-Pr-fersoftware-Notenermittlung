@@ -109,7 +109,7 @@ apProzentL.place(x=220, y=30, height=30, width=30)
 
 #Eingabe
 
-ap1Eintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10))
+ap1Eintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 ap1Eintrag.insert(0,'0')
 
 ap1Eintrag.place(x=10, y=140, height=30, width=200)
@@ -162,15 +162,15 @@ ap2WirtsProz.place(x=470, y=260, height=30, width=30)
 
 
 #Eingabe AP2
-planEintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10))
+planEintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 planEintrag.insert(0,'0')
 planEintrag.place(x=260, y=140, height=30, width=200)
 
-entwEintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10))
+entwEintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 entwEintrag.insert(0,'0')
 entwEintrag.place(x=260, y=220, height=30, width=200)
 
-wirtsEintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10))
+wirtsEintrag = Entry(tab1, borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 wirtsEintrag.insert(0,'0')
 wirtsEintrag.place(x=260, y=300, height=30, width=200)
 
@@ -214,44 +214,52 @@ dokuDars = Label(tab1, text='Darstellung der Projektergebnisse \nund praxisbezog
 dokuDars.place(x=510, y=460, height=30, width=200)
 
 #Eingabe
-gestEintrag = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10))
+gestEintrag = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
+gestEintrag.insert(0,'0')
 gestEintrag.place(x=510, y=140, height=30, width=200)
 
-dPunkte2 = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10))
+dPunkte2 = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
+dPunkte2.insert(0,'0')
 dPunkte2.place(x=510, y=260, height=30, width=200)
 
-dPunkte3 = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10))
+dPunkte3 = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
+dPunkte3.insert(0,'0')
 dPunkte3.place(x=510, y=380, height=30, width=200)
 
-dPunkte4 = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10))
+dPunkte4 = Entry(tab1,text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
+dPunkte4.insert(0,'0')
 dPunkte4.place(x=510, y=500, height=30, width=200)
 
 #Kommentar Dokumentation
-gestaltKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+gestaltKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 gestaltKomment.place(x=510, y=180, height=30, width=200)
 
-konkretKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+konkretKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 konkretKomment.place(x=510, y=300, height=30, width=200)
 
-beschreibKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+beschreibKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 beschreibKomment.place(x=510, y=420, height=30, width=200)
 
-darstKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+darstKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 darstKomment.place(x=510, y=540, height=30, width=200)
 
 #Kommentar Dokumentation Punkte
 
-gestKoPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+gestKoPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
+gestKoPunkte.insert(0,'0')
 gestKoPunkte.place(x=720, y=180, height=30, width=30)
 
-konkKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+konkKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 konkKomPunkte.place(x=720, y=300, height=30, width=30)
+konkKomPunkte.insert(0,'0')
 
-beschKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+beschKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 beschKomPunkte.place(x=720, y=420, height=30, width=30)
+beschKomPunkte.insert(0,'0')
 
-darstKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+darstKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 darstKomPunkte.place(x=720, y=540, height=30, width=30)
+darstKomPunkte.insert(0,'0')
 
 
 
@@ -290,24 +298,27 @@ praeTech.place(x=760, y=220, height=30, width=200)
 
 aufbEingabe = Entry(tab1, text='', justify='center', borderwidth=1, relief='solid', font=('Arial', 10))
 aufbEingabe.place(x=760, y=140, height=30, width=200)
+aufbEingabe.insert(0,'0')
 
-praePunkte3 = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+praePunkte3 = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 praePunkte3.place(x=760, y=260, height=30, width=200)
+praePunkte3.insert(0,'0')
 
 #Kommentar Präsentation und Fachgespräch
-aufbKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+aufbKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 aufbKomment.place(x=760, y=180, height=30, width=200)
 
-praeTechKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+praeTechKomment = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 praeTechKomment.place(x=760, y=300, height=30, width=200)
 
 #Kommentar Präsentation und Fachgespräch Punkte
-aufbKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+aufbKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 aufbKomPunkte.place(x=970, y=180, height=30, width=30)
+aufbKomPunkte.insert(0,'0')
 
-praeKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
+praeKomPunkte = Entry(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10), justify='center')
 praeKomPunkte.place(x=970, y=300, height=30, width=30)
-
+praeKomPunkte.insert(0,'0')
 
 #Gewichtung
 aufbProzL = Label(tab1, text='40%', borderwidth=1, relief='solid', font=('Arial', 10))
