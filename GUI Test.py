@@ -52,7 +52,7 @@ def Endnoteberechnen():
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
-mainwindow.geometry("1040x1000") 
+mainwindow.geometry("1040x710")
 mainwindow.resizable(0, 0)
 
 #TabControl
@@ -91,7 +91,7 @@ form7End.place(x=0, y=630, height=50, width=1000)
 #---------------------------------------------------------------------------------------------------------------
 
 #Button Endergebnis berechnen
-endBerechnenButton = Button(tab1, borderwidth=0, text="Ergebnis")
+endBerechnenButton = Button(tab1, borderwidth=0, text="Ergebnis", font=('Arial', 10))
 endBerechnenButton.place()
 
 #ButtonTeil1 AP1 berechnen
@@ -369,13 +369,13 @@ schriftlGesamtB.place(x=10, y=590, height=30, width=300)
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
 planUmsErgebnis.place(x=820, y=590, height=30, width=30)
 
-planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command = projektBerechnen)
-planUmsGesamtB.place(x=510, y=510, height=30, width=300)
+planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command = projektBerechnen, font=('Arial', 10))
+planUmsGesamtB.place(x=510, y=590, height=30, width=300)
 
 #Endnote
 
-endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=Endnoteberechnen)
-endNoteGesamtB.place(x=10, y=560, height=30, width=250)
+endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=Endnoteberechnen, font=('Arial', 10))
+endNoteGesamtB.place(x=140, y=640, height=30, width=250)
 
 endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
 endNoteErgebnis.place(x=400, y=640, height=30, width=250)
