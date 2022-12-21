@@ -23,11 +23,6 @@ def berechnen():
     labelErgebnis.config(text=str(ergebnis))
 
 
-
-
-
-
-
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
