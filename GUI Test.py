@@ -42,6 +42,11 @@ def projektBerechnen():
 def Endnoteberechnen():
     endnote = (schriftlBerechnen() * 0.5) + (projektBerechnen() * 0.5)
     endNoteErgebnis.config(text=str(format(endnote, '.1f')))
+    if endnote >= 50:
+        bestandenMeldung.config(text='Bestanden')
+    else:
+        bestandenMeldung.config(text='Nicht Bestanden')
+
 
 
 
