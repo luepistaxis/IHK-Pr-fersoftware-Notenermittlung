@@ -1,4 +1,5 @@
 import tkinter
+import random
 from tkinter import *
 from tkinter import ttk
 
@@ -36,7 +37,7 @@ def projektBerechnen():
     return endergebnisProjekt
 
 
-def Endnoteberechnen():
+def endnote_berechnen():
 
     #Gesamtpunkte AP2 schriftlicher teil
     ergebnisSchriftlAP2Punkte = float(planEintrag.get()) + float(entwEintrag.get()) + float(wirtsEintrag.get())
@@ -74,7 +75,8 @@ def Endnoteberechnen():
     #Prüfen ob in Teil 2 weniger als 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
     #Prüfen ob Teil 1 und 2 zusammen weniger als 50% erreichen. Wenn ja -> nicht bestanden
     #Prüfen ob weniger als 3 Prüfungsbereiche in Teil 2 >= 50% sind. Wenn ja -> nicht bestanden
-    #Annahme: Prüfungsbereiche Teil 2 = Domkumentation, Präse und Fachgespräch, die 3 Theorieprüfungen
+    #Annahme: Prüfungsbereiche Teil 2 = Dokumentation, Präse und Fachgespräch, die 3 Theorieprüfungen
+    #Edit: Bei Tennbusch nachgefragt, Rechnugen passen alle so.
     bestehBedingungen = TRUE
     if (float(planEintrag.get()) < 30 or float(entwEintrag.get()) < 30 or float(wirtsEintrag.get()) < 30 or ergebnisDokumentationPunkte < (400/100*30) or ergebnisPraesentationPunkte < (200/100*30)) or ergebnisTeil2Punkte < 450 or endnote < 50 or i < 3:
         bestehBedingungen = FALSE
@@ -84,7 +86,10 @@ def Endnoteberechnen():
     else:
         bestandenMeldung.config(text='Nicht Bestanden')
 
-
+def zufalls_endnote_berechnen():
+    ap1Eintrag.delete(0, "end")
+    ap1Eintrag.insert(0, str(random.randint(0,100))) 
+    
 
 
 
@@ -402,7 +407,7 @@ praeUmrechnung.place(x=970, y=260, height=30, width=30)
 schriftlErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
 schriftlErgebnis.place(x=320, y=590, height=30, width=30 )
 
-schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command=schriftlBerechnen, font=('Arial', 10))
+schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
 schriftlGesamtB.place(x=10, y=590, height=30, width=300)
 
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
@@ -413,7 +418,7 @@ planUmsGesamtB.place(x=510, y=590, height=30, width=300)
 
 #Endnote
 
-endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=Endnoteberechnen, font=('Arial', 10))
+endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=endnote_berechnen, font=('Arial', 10))
 endNoteGesamtB.place(x=140, y=640, height=30, width=250)
 
 endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
