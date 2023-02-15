@@ -427,7 +427,7 @@ praeUmrechnung.place(x=970, y=260, height=30, width=30)
 schriftlErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
 schriftlErgebnis.place(x=320, y=590, height=30, width=30 )
 
-schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
+schriftlGesamtB = Button(tab1, text='Zufallsbewertung', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
 schriftlGesamtB.place(x=10, y=590, height=30, width=300)
 
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
