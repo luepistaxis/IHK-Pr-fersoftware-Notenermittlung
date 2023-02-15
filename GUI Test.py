@@ -88,7 +88,27 @@ def endnote_berechnen():
 
 def zufalls_endnote_berechnen():
     ap1Eintrag.delete(0, "end")
-    ap1Eintrag.insert(0, str(random.randint(0,100))) 
+    ap1Eintrag.insert(0, str(random.randint(0,100)))
+    planEintrag.delete(0, "end")
+    planEintrag.insert(0, str(random.randint(0,100)))
+    entwEintrag.delete(0, "end")
+    entwEintrag.insert(0, str(random.randint(0,100)))
+    wirtsEintrag.delete(0, "end")
+    wirtsEintrag.insert(0, str(random.randint(0,100)))
+    gestEintrag.delete(0, "end")
+    gestEintrag.insert(0, str(random.randint(0,100)))
+    dPunkte2.delete(0, "end")
+    dPunkte2.insert(0, str(random.randint(0,100)))
+    dPunkte3.delete(0, "end")
+    dPunkte3.insert(0, str(random.randint(0,100)))
+    dPunkte4.delete(0, "end")
+    dPunkte4.insert(0, str(random.randint(0,100)))
+    aufbEingabe.delete(0, "end")
+    aufbEingabe.insert(0, str(random.randint(0,100)))
+    praePunkte3.delete(0, "end")
+    praePunkte3.insert(0, str(random.randint(0,100)))
+    
+    
     
 
 
