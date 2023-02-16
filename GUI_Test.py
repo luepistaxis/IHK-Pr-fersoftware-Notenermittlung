@@ -202,8 +202,6 @@ def speichern():
 
 
 
-
-
 def schriftlBerechnen():
     ergebnisAP1 = float(ap1Eintrag.get()) * 0.2
     ergebisPlanEintrag = float(planEintrag.get()) * 0.1
@@ -231,7 +229,7 @@ def projektBerechnen():
     endergebnisProjekt = ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
     planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
 
-    return endergebnisProjekt
+    return endergebnisProjekt 
 
 
 def endnote_berechnen():
@@ -282,6 +280,9 @@ def endnote_berechnen():
         bestandenMeldung.config(text='Bestanden')
     else:
         bestandenMeldung.config(text='Nicht Bestanden')
+        
+    return str(format(endnote, '.1f'))
+
 
 def zufalls_endnote_berechnen():
     ap1Eintrag.delete(0, "end")
