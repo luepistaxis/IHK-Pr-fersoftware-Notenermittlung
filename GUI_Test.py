@@ -212,7 +212,6 @@ def schriftlBerechnen():
 
     #Ausgeabe: "ergebnisSchriftl = 2 *..." damit die Ausgabe widerspiegelt wie viele von 100% im Bereich der schriftlichen Prüfungen erreicht wurden
     ergebnisSchriftl = 2 * (ergebnisAP1 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag)
-    schriftlErgebnis.config(text=str(format(ergebnisSchriftl, '.1f')))
 
     return ergebnisSchriftl
 
@@ -267,7 +266,7 @@ def endnote_berechnen():
         i+=1
     if ergebnisPraesentationPunkte >= 100:
         i+=1    
-    print(i)
+    #print(i)
 
     #Prüfen ob in Teil 2 mindestens ein Ergebnis ungenügend ist. Wenn doch -> nicht bestanden
     #Prüfen ob in Teil 2 weniger als 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
