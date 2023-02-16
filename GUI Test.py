@@ -1,7 +1,7 @@
 import tkinter
-import random
 from tkinter import *
 from tkinter import ttk
+from datetime import date
 
 
 
@@ -37,7 +37,7 @@ def projektBerechnen():
     return endergebnisProjekt
 
 
-def endnote_berechnen():
+def Endnoteberechnen():
 
     #Gesamtpunkte AP2 schriftlicher teil
     ergebnisSchriftlAP2Punkte = float(planEintrag.get()) + float(entwEintrag.get()) + float(wirtsEintrag.get())
@@ -75,8 +75,7 @@ def endnote_berechnen():
     #Prüfen ob in Teil 2 weniger als 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
     #Prüfen ob Teil 1 und 2 zusammen weniger als 50% erreichen. Wenn ja -> nicht bestanden
     #Prüfen ob weniger als 3 Prüfungsbereiche in Teil 2 >= 50% sind. Wenn ja -> nicht bestanden
-    #Annahme: Prüfungsbereiche Teil 2 = Dokumentation, Präse und Fachgespräch, die 3 Theorieprüfungen
-    #Edit: Bei Tennbusch nachgefragt, Rechnugen passen alle so.
+    #Annahme: Prüfungsbereiche Teil 2 = Domkumentation, Präse und Fachgespräch, die 3 Theorieprüfungen
     bestehBedingungen = TRUE
     if (float(planEintrag.get()) < 30 or float(entwEintrag.get()) < 30 or float(wirtsEintrag.get()) < 30 or ergebnisDokumentationPunkte < (400/100*30) or ergebnisPraesentationPunkte < (200/100*30)) or ergebnisTeil2Punkte < 450 or endnote < 50 or i < 3:
         bestehBedingungen = FALSE
@@ -86,44 +85,21 @@ def endnote_berechnen():
     else:
         bestandenMeldung.config(text='Nicht Bestanden')
 
-def zufalls_endnote_berechnen():
-    ap1Eintrag.delete(0, "end")
-    ap1Eintrag.insert(0, str(random.randint(0,100)))
-    planEintrag.delete(0, "end")
-    planEintrag.insert(0, str(random.randint(0,100)))
-    entwEintrag.delete(0, "end")
-    entwEintrag.insert(0, str(random.randint(0,100)))
-    wirtsEintrag.delete(0, "end")
-    wirtsEintrag.insert(0, str(random.randint(0,100)))
-    gestEintrag.delete(0, "end")
-    gestEintrag.insert(0, str(random.randint(0,100)))
-    dPunkte2.delete(0, "end")
-    dPunkte2.insert(0, str(random.randint(0,100)))
-    dPunkte3.delete(0, "end")
-    dPunkte3.insert(0, str(random.randint(0,100)))
-    dPunkte4.delete(0, "end")
-    dPunkte4.insert(0, str(random.randint(0,100)))
-    aufbEingabe.delete(0, "end")
-    aufbEingabe.insert(0, str(random.randint(0,100)))
-    praePunkte3.delete(0, "end")
-    praePunkte3.insert(0, str(random.randint(0,100)))
-    
-    
-    
+
 
 
 
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
-mainwindow.geometry("1040x710")
+mainwindow.geometry("1290x710")
 mainwindow.resizable(0, 0)
 
 #TabControl
 tabControl = ttk.Notebook(mainwindow)
 
-tab1= Frame(tabControl, width=1040, height=710)
-tab2= Frame(tabControl, width=1040, height=710)
+tab1= Frame(tabControl, width=1290, height=710)
+tab2= Frame(tabControl, width=1290, height=710)
 
 tabControl.add(tab1, text='Berechnung')
 tabControl.add(tab2, text='PDF Vorlage')
@@ -152,7 +128,39 @@ form6Ges2.place(x=500, y=580, height=50, width=500)
 
 form7End = Label(tab1, borderwidth=1, relief='solid')
 form7End.place(x=0, y=630, height=50, width=1000)
+
+form8Interface =Label(tab1, borderwidth=1, relief='solid')
+form8Interface.place(x=1000, y=0, height=630, width=250)
 #---------------------------------------------------------------------------------------------------------------
+#Interface
+
+nameLabel = Label(tab1, text="Vor- und Nachname:")
+nameLabel.place(x=1000, y= 10, height=30, width=120)
+
+nameEntry = Entry(tab1, text="")
+nameEntry.place(x=1120, y= 10, height=30, width=120)
+
+idLabel = Label(tab1, text="Prüfer ID:")
+idLabel.place(x = 1000, y= 60, height= 30, width=120)
+
+idEntry = Entry(tab1, text="")
+idEntry.place(x=1120, y=60, height= 30, width=120)
+
+datumLabel = Label(tab1, text="Datum:")
+datumLabel.place(x=1000, y=100, height=30, width=120)
+
+datumEntry = Entry(tab1, text="" )
+datumEntry.place(x=1120, y=100, height=30, width=120)
+
+pdfBtn = Button(tab1, text="")
+pdfBtn.place()
+
+speichernBtn = Button()
+speichernBtn.place()
+
+
+#-------------------------------------------------------------------------------------------------------------------------------
+
 
 #Button Endergebnis berechnen
 endBerechnenButton = Button(tab1, borderwidth=0, text="Ergebnis", font=('Arial', 10))
@@ -176,7 +184,7 @@ schrifButton.place()
 
 #Exit
 exitButton = Button(tab1, borderwidth=0, bg='white', text='Exit', command=mainwindow.destroy, font=('Arial', 10))
-exitButton.place(x=1010, y=0, height='30', width='30')
+exitButton.place(x=1250, y=0, height='30', width='30')
 
 #-----------------------------------------------------------------------------------------------
 #TEIL1
@@ -427,7 +435,7 @@ praeUmrechnung.place(x=970, y=260, height=30, width=30)
 schriftlErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
 schriftlErgebnis.place(x=320, y=590, height=30, width=30 )
 
-schriftlGesamtB = Button(tab1, text='Zufallsbewertung', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
+schriftlGesamtB = Button(tab1, text='schriftliche Prüfungen gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command=schriftlBerechnen, font=('Arial', 10))
 schriftlGesamtB.place(x=10, y=590, height=30, width=300)
 
 planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
@@ -438,7 +446,7 @@ planUmsGesamtB.place(x=510, y=590, height=30, width=300)
 
 #Endnote
 
-endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=endnote_berechnen, font=('Arial', 10))
+endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=Endnoteberechnen, font=('Arial', 10))
 endNoteGesamtB.place(x=140, y=640, height=30, width=250)
 
 endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))

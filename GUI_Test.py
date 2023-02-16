@@ -2,6 +2,7 @@ import tkinter
 import random
 from tkinter import *
 from tkinter import ttk
+from datetime import datetime
 
 
 
@@ -116,14 +117,14 @@ def zufalls_endnote_berechnen():
 #Fenster erstellen
 mainwindow = Tk()
 mainwindow.title('Notenberechnung')
-mainwindow.geometry("1040x710")
+mainwindow.geometry("1290x710")
 mainwindow.resizable(0, 0)
 
 #TabControl
 tabControl = ttk.Notebook(mainwindow)
 
-tab1= Frame(tabControl, width=1040, height=710)
-tab2= Frame(tabControl, width=1040, height=710)
+tab1= Frame(tabControl, width=1290, height=710)
+tab2= Frame(tabControl, width=1290, height=710)
 
 tabControl.add(tab1, text='Berechnung')
 tabControl.add(tab2, text='PDF Vorlage')
@@ -152,7 +153,44 @@ form6Ges2.place(x=500, y=580, height=50, width=500)
 
 form7End = Label(tab1, borderwidth=1, relief='solid')
 form7End.place(x=0, y=630, height=50, width=1000)
+
+form8Interface =Label(tab1, borderwidth=1, relief='solid')
+form8Interface.place(x=1000, y=30, height=600, width=250)
+
+form9Pruefling = Label(tab1, borderwidth=1, relief='solid')
+form9Pruefling.place(x=1000, y=0, height=30, width=250)
+
 #---------------------------------------------------------------------------------------------------------------
+#Interface
+
+prueflingLabel = Label(tab1, text="Prüfling", font=('Arial', 20), justify='center')
+prueflingLabel.place(x=1000, y=1, height=29, width=240)
+
+nameLabel = Label(tab1, text="Vor- und Nachname:")
+nameLabel.place(x=1000, y= 50, height=30, width=120)
+
+nameEntry = Entry(tab1, text="", relief='solid')
+nameEntry.place(x=1120, y= 50, height=30, width=120)
+
+idLabel = Label(tab1, text="Prüflings ID:")
+idLabel.place(x = 1000, y= 90, height= 30, width=120)
+
+idEntry = Entry(tab1, text="", relief='solid')
+idEntry.place(x=1120, y=90, height= 30, width=120)
+
+dateLabel = Label(tab1, text="Datum:")
+dateLabel.place(x=1000, y=130, height= 30, width=120)
+
+dateEntry = Entry(tab1, text="", relief='solid', justify='center')
+dateEntry.insert(0, datetime.today().strftime('%d.%m.%Y'))
+dateEntry.place(x=1120, y=130, height=30, width=120)
+
+pdfBtn = Button(tab1, text="in PDF speichern", borderwidth=1, relief='solid')
+pdfBtn.place(x=1010, y=170, height=30, width=120)
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------
 
 #Button Endergebnis berechnen
 endBerechnenButton = Button(tab1, borderwidth=0, text="Ergebnis", font=('Arial', 10))
@@ -175,8 +213,8 @@ schrifButton =Button(tab1, borderwidth=0, text="Ergebnis", font=('Arial', 10))
 schrifButton.place()
 
 #Exit
-exitButton = Button(tab1, borderwidth=0, bg='white', text='Exit', command=mainwindow.destroy, font=('Arial', 10))
-exitButton.place(x=1010, y=0, height='30', width='30')
+exitButton = Button(tab1, borderwidth=1, text='Exit', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
+exitButton.place(x=1150, y=170, height='30', width='30')
 
 #-----------------------------------------------------------------------------------------------
 #TEIL1
