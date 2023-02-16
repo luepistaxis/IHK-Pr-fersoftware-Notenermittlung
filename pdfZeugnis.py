@@ -1,7 +1,7 @@
 #import fpdf
 from fpdf import FPDF
 from datetime import date
-import os
+import os 
 from os.path import exists
 #import textwrap
    

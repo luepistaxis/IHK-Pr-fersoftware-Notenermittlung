@@ -166,27 +166,27 @@ form9Pruefling.place(x=1000, y=0, height=30, width=250)
 prueflingLabel = Label(tab1, text="Prüfling", font=('Arial', 20), justify='center')
 prueflingLabel.place(x=1000, y=1, height=29, width=240)
 
-nameLabel = Label(tab1, text="Vor- und Nachname:")
-nameLabel.place(x=1000, y= 50, height=30, width=120)
+nameLabel = Label(tab1, text="Vor- und Nachname:",  anchor='e')
+nameLabel.place(x=1001, y= 50, height=30, width=120)
 
 nameEntry = Entry(tab1, text="", relief='solid')
 nameEntry.place(x=1120, y= 50, height=30, width=120)
 
-idLabel = Label(tab1, text="Prüflings ID:")
-idLabel.place(x = 1000, y= 90, height= 30, width=120)
+idLabel = Label(tab1, text="Prüflings ID:", anchor='e')
+idLabel.place(x = 1001, y= 90, height= 30, width=120)
 
 idEntry = Entry(tab1, text="", relief='solid')
 idEntry.place(x=1120, y=90, height= 30, width=120)
 
-dateLabel = Label(tab1, text="Datum:")
-dateLabel.place(x=1000, y=130, height= 30, width=120)
+dateLabel = Label(tab1, text="Datum:", anchor='e')
+dateLabel.place(x=1001, y=130, height= 30, width=120)
 
 dateEntry = Entry(tab1, text="", relief='solid', justify='center')
 dateEntry.insert(0, datetime.today().strftime('%d.%m.%Y'))
 dateEntry.place(x=1120, y=130, height=30, width=120)
 
 pdfBtn = Button(tab1, text="in PDF speichern", borderwidth=1, relief='solid')
-pdfBtn.place(x=1010, y=170, height=30, width=120)
+pdfBtn.place(x=1010, y=170, height=30, width=100)
 
 
 
@@ -213,8 +213,8 @@ schrifButton =Button(tab1, borderwidth=0, text="Ergebnis", font=('Arial', 10))
 schrifButton.place()
 
 #Exit
-exitButton = Button(tab1, borderwidth=1, text='Exit', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
-exitButton.place(x=1150, y=170, height='30', width='30')
+exitButton = Button(tab1, borderwidth=1, text='Schließen', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
+exitButton.place(x=1130, y=170, height=30, width=100)
 
 #-----------------------------------------------------------------------------------------------
 #TEIL1
@@ -469,11 +469,6 @@ schriftlErgebnis.place(x=320, y=590, height=30, width=30 )
 schriftlGesamtB = Button(tab1, text='Zufallsbewertung', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
 schriftlGesamtB.place(x=10, y=590, height=30, width=300)
 
-planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
-planUmsErgebnis.place(x=820, y=590, height=30, width=30)
-
-planUmsGesamtB = Button(tab1, text='Planen und Umsetzen eines \nSoftwareprodukts gesamt berechnen', borderwidth=1, relief='solid', bg='grey77', command = projektBerechnen, font=('Arial', 10))
-planUmsGesamtB.place(x=510, y=590, height=30, width=300)
 
 #Endnote
 
