@@ -319,10 +319,8 @@ mainwindow.resizable(0, 0)
 tabControl = ttk.Notebook(mainwindow)
 
 tab1= Frame(tabControl, width=1290, height=710)
-tab2= Frame(tabControl, width=1290, height=710)
 
 tabControl.add(tab1, text='Berechnung')
-tabControl.add(tab2, text='PDF Vorlage')
 
 tabControl.place(x=0, y=0)
 
@@ -341,10 +339,10 @@ form4AP2 = Label(tab1, borderwidth=1, relief='solid')
 form4AP2.place(x=750, y=90, height=490, width=250)
 
 form5Ges1 = Label(tab1, borderwidth=1, relief='solid')
-form5Ges1.place(x=0, y=580, height=50, width=270)
+form5Ges1.place(x=0, y=580, height=50, width=275)
 
 form6Ges2 = Label(tab1, borderwidth=1, relief='solid')
-form6Ges2.place(x=270, y=580, height=50, width=730)
+form6Ges2.place(x=275, y=580, height=50, width=735)
 
 #form7End = Label(tab1, borderwidth=1, relief='solid')
 #form7End.place(x=0, y=630, height=50, width=1000)
@@ -410,7 +408,7 @@ schrifButton.place()
 
 #Exit
 exitButton = Button(tab1, borderwidth=1, text='Schließen', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
-exitButton.place(x=1130, y=170, height=30, width=100)
+exitButton.place(x=1140, y=170, height=30, width=100)
 
 #-----------------------------------------------------------------------------------------------
 #TEIL1
