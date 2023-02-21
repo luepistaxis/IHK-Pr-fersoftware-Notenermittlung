@@ -5,7 +5,7 @@ from tkinter import ttk
 from datetime import datetime
 
 #import fpdf
-from fpdf import FPDF
+#from fpdf import FPDF
 from datetime import date
 import os
 from os.path import exists
@@ -227,10 +227,10 @@ def projektBerechnen():
     zwischenErgebnisPraesentation = ergebnisAufbau + ergebnisPraesentation
 
     endergebnisProjekt = ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
+
     planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
 
-    return endergebnisProjekt 
-
+    return endergebnisProjekt
 
 def endnote_berechnen():
 
@@ -320,15 +320,13 @@ mainwindow.resizable(0, 0)
 tabControl = ttk.Notebook(mainwindow)
 
 tab1= Frame(tabControl, width=1290, height=710)
-tab2= Frame(tabControl, width=1290, height=710)
 
 tabControl.add(tab1, text='Berechnung')
-tabControl.add(tab2, text='PDF Vorlage')
 
 tabControl.place(x=0, y=0)
 
 #------------------------------------------------------------------------------------------------------------------
-#Format verschönener mit Boxen
+#Format verschönener mit Boxen/Rahmen
 form1AP1 = Label(tab1, borderwidth=1, relief='solid')
 form1AP1.place(x=0, y=60, height=520, width=250)
 
@@ -342,13 +340,13 @@ form4AP2 = Label(tab1, borderwidth=1, relief='solid')
 form4AP2.place(x=750, y=90, height=490, width=250)
 
 form5Ges1 = Label(tab1, borderwidth=1, relief='solid')
-form5Ges1.place(x=0, y=580, height=50, width=500)
+form5Ges1.place(x=0, y=580, height=50, width=275)
 
 form6Ges2 = Label(tab1, borderwidth=1, relief='solid')
-form6Ges2.place(x=500, y=580, height=50, width=500)
+form6Ges2.place(x=275, y=580, height=50, width=735)
 
-form7End = Label(tab1, borderwidth=1, relief='solid')
-form7End.place(x=0, y=630, height=50, width=1000)
+#form7End = Label(tab1, borderwidth=1, relief='solid')
+#form7End.place(x=0, y=630, height=50, width=1000)
 
 form8Interface =Label(tab1, borderwidth=1, relief='solid')
 form8Interface.place(x=1000, y=30, height=600, width=250)
@@ -360,29 +358,30 @@ form9Pruefling.place(x=1000, y=0, height=30, width=250)
 #Interface
 
 prueflingLabel = Label(tab1, text="Prüfling", font=('Arial', 20), justify='center')
-prueflingLabel.place(x=1000, y=1, height=29, width=240)
+prueflingLabel.place(x=1001, y=1, height=28, width=238)
 
-nameLabel = Label(tab1, text="Vor- und Nachname:")
-nameLabel.place(x=1000, y= 50, height=30, width=120)
+nameLabel = Label(tab1, text="Vor- und Nachname:",  anchor='e')
+nameLabel.place(x=1001, y= 50, height=30, width=120)
 
 nameEntry = Entry(tab1, text="", relief='solid')
+nameEntry.grid(padx='5')
 nameEntry.place(x=1120, y= 50, height=30, width=120)
 
-idLabel = Label(tab1, text="Prüflings ID:")
-idLabel.place(x = 1000, y= 90, height= 30, width=120)
+idLabel = Label(tab1, text="Prüflings ID:", anchor='e')
+idLabel.place(x = 1001, y= 90, height= 30, width=120)
 
 idEntry = Entry(tab1, text="", relief='solid')
 idEntry.place(x=1120, y=90, height= 30, width=120)
 
-dateLabel = Label(tab1, text="Datum:")
-dateLabel.place(x=1000, y=130, height= 30, width=120)
+dateLabel = Label(tab1, text="Datum:", anchor='e')
+dateLabel.place(x=1001, y=130, height= 30, width=120)
 
 dateEntry = Entry(tab1, text="", relief='solid', justify='center')
 dateEntry.insert(0, datetime.today().strftime('%d.%m.%Y'))
 dateEntry.place(x=1120, y=130, height=30, width=120)
 
-pdfBtn = Button(tab1, text="in PDF speichern", borderwidth=1, relief='solid', command=speichern)
-pdfBtn.place(x=1010, y=170, height=30, width=120)
+pdfBtn = Button(tab1, text="in PDF speichern", borderwidth=1, relief='solid')
+pdfBtn.place(x=1010, y=170, height=30, width=100)
 
 
 
@@ -409,8 +408,8 @@ schrifButton =Button(tab1, borderwidth=0, text="Ergebnis", font=('Arial', 10))
 schrifButton.place()
 
 #Exit
-exitButton = Button(tab1, borderwidth=1, text='Exit', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
-exitButton.place(x=1150, y=170, height='30', width='30')
+exitButton = Button(tab1, borderwidth=1, text='Schließen', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
+exitButton.place(x=1140, y=170, height=30, width=100)
 
 #-----------------------------------------------------------------------------------------------
 #TEIL1
@@ -660,21 +659,20 @@ praeUmrechnung.place(x=970, y=260, height=30, width=30)
 #-----------------------------------------------------------------------------------------------------------------
 #Ergebnis Schriftliche Prüfungen Gesamt
 
-schriftlGesamtB = Button(tab1, text='Zufallsbewertung', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
-schriftlGesamtB.place(x=10, y=590, height=30, width=300)
+zufallsButton = Button(tab1, text='Zufallsbewertung', borderwidth=1, relief='solid', bg='grey77', command=zufalls_endnote_berechnen, font=('Arial', 10))
+zufallsButton.place(x=30, y=590, height=30, width=200)
 
-planUmsErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
 
 #Endnote
 
 endNoteGesamtB = Button(tab1, text='Endnote', borderwidth=1, relief='solid', bg='grey77', command=endnote_berechnen, font=('Arial', 10))
-endNoteGesamtB.place(x=140, y=640, height=30, width=250)
+endNoteGesamtB.place(x=320, y=590, height=30, width=200)
 
 endNoteErgebnis = Label(tab1, text='', borderwidth=1, relief='solid', font=('Arial', 10))
-endNoteErgebnis.place(x=400, y=640, height=30, width=250)
+endNoteErgebnis.place(x=530, y=590, height=30, width=200)
 
 bestandenMeldung = Label(tab1,  text='', borderwidth=1, relief='solid', font=('Arial', 10), )
-bestandenMeldung.place(x=660, y=640, height=30, width=250)
+bestandenMeldung.place(x=740, y=590, height=30, width=200)
 
 #Start
 mainwindow.mainloop()
