@@ -13,23 +13,27 @@ from os.path import exists
 
 def speichern():
 
+    def KommentareFormatieren(kommentar):
+        #knapp hundert 90-95?
+        return kommentar[:100]
+
     def PunkteAusgabeFormatieren(zahl):
         formatierteZahl = ""
 
-        if zahl >= 10 and zahl < 100:
+        if float(zahl) >= 10 and float(zahl) < 100:
             formatierteZahl  = "\t\t" + str(zahl)
-        elif zahl < 10 :
+        elif float(zahl) < 10 :
             formatierteZahl = "\t\t\t\t" + str(zahl)
         else:
             formatierteZahl = "" + str(zahl)
 
         return formatierteZahl
 
-    def DatumAusgeben(datum):
-        string = ""
-        for d in datum:
-            string = d + "." + string
-        return string[:-1]
+    #def DatumAusgeben(datum):
+    #    string = ""
+    #    for d in datum:
+    #        string = d + "." + string
+    #    return string[:-1]
 
     #create object instance
     pdf = FPDF()
@@ -53,40 +57,40 @@ def speichern():
     fontsizeNewLine = 2
     tab1 = "\t\t\t\t\t\t\t\t\t\t\t\t"
     tab2 = "\t\t"
+    tab3 = 2*tab1 + tab2
 
     #Variablen Person und Datum TEMPORÄR!!!
     datum = str(date.today()).split("-")
     jahr = datum[0]
-    name = "Alf Tanner von Melmac"
-    id = 1234567890
+    datum = dateEntry.get()
+    name = nameEntry.get() #"Alf Tanner von Melmac"
+    id = idEntry.get()
 
     version = "V_082"
 
     #Variablen (Zwischen-) Noten TEMPÖRÄR!!! bisherige bezeihcnungen
-    ergebnisAP1 = 42.0
-    ergebisPlanEintrag = 80.80
-    ergebnisEntwEintrag = 100.0
-    ergebnisWirtsEintrag = 0.0
+    ergebnisAP1 = ap1Eintrag.get()
+    ergebisPlanEintrag = planEintrag.get()
+    ergebnisEntwEintrag = entwEintrag.get()
+    ergebnisWirtsEintrag = wirtsEintrag.get()
 
-    ergebnisGestaltung = 00.0
-    ergebnisKonkretisierung = 10.0
-    ergebnisBeschreibung = 100.0
-    ergebnisDarstellung = 00.0
+    ergebnisGestaltung = gestEintrag.get()
+    ergebnisKonkretisierung = dPunkte2.get()
+    ergebnisBeschreibung = dPunkte3.get()
+    ergebnisDarstellung = dPunkte4.get()
 
-    ergebnisAufbau = 100.0
-    ergebnisPraesentation = 00.0
+    ergebnisAufbau = aufbKomPunkte.get()
+    ergebnisPraesentation = praeKomPunkte.get()
 
-    endnote = 100.0
+    #endnote = endnote.get()
+    endnote = endnote_berechnen()
 
-
-    ergebnisGestaltungKommentar = "Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    ergebnisKonkretisierungKommentar = "Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    ergebnisBeschreibungKommentar = "Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    ergebnisDarstellungKommentar = "Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    ergebnisAufbauKommentar = "Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-    ergebnisPraesentationKommentar = "Kommentar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n"
-
-
+    ergebnisGestaltungKommentar = gestaltKomment.get()
+    ergebnisKonkretisierungKommentar = konkretKomment.get()    
+    ergebnisBeschreibungKommentar = beschreibKomment.get()
+    ergebnisDarstellungKommentar = darstKomment.get() 
+    ergebnisAufbauKommentar = aufbKomment.get()
+    ergebnisPraesentationKommentar = praeTechKomment.get() 
 
     name_x = name.split(" ");
     nameUnderscore = ""
@@ -145,19 +149,19 @@ def speichern():
     pdf.set_font("Arial", size = fontsize4) 
     pdf.cell(100, hoehe3, txt = tab2+ PunkteAusgabeFormatieren(ergebnisGestaltung) +tab1+" Gestaltung Projektbericht (äußere Form)", ln = 2, align = 'L') 
     pdf.set_font("Arial", size = fontsize5) 
-    pdf.multi_cell(weiteKommentar, hoeheKommentar, ergebnisGestaltungKommentar) 
+    pdf.multi_cell(weiteKommentar, hoeheKommentar, tab3 + KommentareFormatieren(ergebnisGestaltungKommentar)) 
     pdf.set_font("Arial", size = fontsize4) 
     pdf.cell(100, hoehe3, txt = tab2+ PunkteAusgabeFormatieren(ergebnisKonkretisierung) +tab1+" Beschreibung des Auftrags, der Ausgangssituation und des Projektumfangs", ln = 2, align = 'L')
     pdf.set_font("Arial", size = fontsize5) 
-    pdf.multi_cell(weiteKommentar, hoeheKommentar, ergebnisKonkretisierungKommentar)   
+    pdf.multi_cell(weiteKommentar, hoeheKommentar, tab3 + KommentareFormatieren(ergebnisKonkretisierungKommentar))  
     pdf.set_font("Arial", size = fontsize4) 
     pdf.cell(100, hoehe3, txt = tab2+ PunkteAusgabeFormatieren(ergebnisBeschreibung) +tab1+" Beschreibung der Prozessschritte", ln = 2, align = 'L')
     pdf.set_font("Arial", size = fontsize5) 
-    pdf.multi_cell(weiteKommentar, hoeheKommentar, ergebnisBeschreibungKommentar)   
+    pdf.multi_cell(weiteKommentar, hoeheKommentar, tab3 + KommentareFormatieren(ergebnisBeschreibungKommentar))   
     pdf.set_font("Arial", size = fontsize4) 
     pdf.cell(100, hoehe3, txt = tab2+ PunkteAusgabeFormatieren(ergebnisDarstellung) +tab1+" Darstellung der Projektergebnisse und praxisbezogene", ln = 2, align = 'L') 
     pdf.set_font("Arial", size = fontsize5) 
-    pdf.multi_cell(weiteKommentar, hoeheKommentar, ergebnisDarstellungKommentar) 
+    pdf.multi_cell(weiteKommentar, hoeheKommentar, tab3 + KommentareFormatieren(ergebnisDarstellungKommentar)) 
     pdf.set_font("Arial", size = fontsizeNewLine)
     pdf.cell(100, hoehe3, txt = "", ln = 2, align = 'L') 
 
@@ -168,11 +172,11 @@ def speichern():
     pdf.set_font("Arial", size = fontsize4)
     pdf.cell(100, hoehe3, txt = tab2+ PunkteAusgabeFormatieren(ergebnisAufbau) +tab1+" Aufbau und inhaltliche Struktur", ln = 2, align = 'L') 
     pdf.set_font("Arial", size = fontsize5) 
-    pdf.multi_cell(weiteKommentar, hoeheKommentar, ergebnisAufbauKommentar) 
+    pdf.multi_cell(weiteKommentar, hoeheKommentar, tab3 + KommentareFormatieren(ergebnisAufbauKommentar)) 
     pdf.set_font("Arial", size = fontsize4) 
     pdf.cell(100, hoehe3, txt = tab2+ PunkteAusgabeFormatieren(ergebnisPraesentation) +tab1+" Präsentationstechnik", ln = 2, align = 'L') 
     pdf.set_font("Arial", size = fontsize5) 
-    pdf.multi_cell(weiteKommentar, hoeheKommentar, ergebnisPraesentationKommentar) 
+    pdf.multi_cell(weiteKommentar, hoeheKommentar, tab3 + KommentareFormatieren(ergebnisPraesentationKommentar)) 
     pdf.set_font("Arial", size = fontsize4)
     pdf.cell(100, hoehe3, txt = "", ln = 2, align = 'L') 
 
@@ -180,7 +184,8 @@ def speichern():
     pdf.set_font("Arial", size = fontsize1)
     pdf.cell(100, hoehe3, txt = "Gesamtnote " + PunkteAusgabeFormatieren(endnote), ln = 2, align = 'L') 
     pdf.cell(100, hoehe3, txt = "", ln = 2, align = 'L') 
-    pdf.cell(100, hoehe3, txt = "Berlin, " + DatumAusgeben(datum), ln = 2, align = 'L') 
+    #pdf.cell(100, hoehe3, txt = "Berlin, " + DatumAusgeben(datum), ln = 2, align = 'L') 
+    pdf.cell(100, hoehe3, txt = "Berlin, " + datum, ln = 2, align = 'L') 
 
 
     #######
@@ -194,11 +199,6 @@ def speichern():
     # save the pdf with name .pdf
     pdf.output(pdfBezeichnung)   
 
-    #ToDo: Kommazahlen fomatieren (mit leerzeichen)
-    #ToDo File überschreiben
-
-    #ToDo Fehler wenn datei schon vorhanden (erledigt?!)
-    #ToDo Kommentar auf gleicher höhe wie
 
 
 
@@ -281,6 +281,10 @@ def endnote_berechnen():
         bestandenMeldung.config(text='Nicht Bestanden')
         
     return str(format(endnote, '.1f'))
+
+
+    return str(format(endnote, '.1f'))
+
 
 
 def zufalls_endnote_berechnen():
