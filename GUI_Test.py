@@ -263,8 +263,7 @@ def endnote_berechnen():
     if ergebnisDokumentationPunkte >= 200:
         i+=1
     if ergebnisPraesentationPunkte >= 100:
-        i+=1    
-    #print(i)
+        i+=1   
 
     #Prüfen ob in Teil 2 mindestens ein Ergebnis ungenügend ist. Wenn doch -> nicht bestanden
     #Prüfen ob in Teil 2 weniger als 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
