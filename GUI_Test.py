@@ -202,8 +202,6 @@ def speichern():
 
 
 
-
-
 def schriftlBerechnen():
     ergebnisAP1 = float(ap1Eintrag.get()) * 0.2
     ergebisPlanEintrag = float(planEintrag.get()) * 0.1
@@ -212,7 +210,6 @@ def schriftlBerechnen():
 
     #Ausgeabe: "ergebnisSchriftl = 2 *..." damit die Ausgabe widerspiegelt wie viele von 100% im Bereich der schriftlichen Prüfungen erreicht wurden
     ergebnisSchriftl = 2 * (ergebnisAP1 + ergebisPlanEintrag + ergebnisEntwEintrag + ergebnisWirtsEintrag)
-    schriftlErgebnis.config(text=str(format(ergebnisSchriftl, '.1f')))
 
     return ergebnisSchriftl
 
@@ -230,8 +227,10 @@ def projektBerechnen():
     zwischenErgebnisPraesentation = ergebnisAufbau + ergebnisPraesentation
 
     endergebnisProjekt = ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
-    return endergebnisProjekt
 
+    planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
+
+    return endergebnisProjekt
 
 def endnote_berechnen():
 
@@ -264,8 +263,7 @@ def endnote_berechnen():
     if ergebnisDokumentationPunkte >= 200:
         i+=1
     if ergebnisPraesentationPunkte >= 100:
-        i+=1    
-    print(i)
+        i+=1   
 
     #Prüfen ob in Teil 2 mindestens ein Ergebnis ungenügend ist. Wenn doch -> nicht bestanden
     #Prüfen ob in Teil 2 weniger als 50% (450/900 Punkten) erreicht wurden. Wenn ja -> nicht bestanden
@@ -281,6 +279,9 @@ def endnote_berechnen():
         bestandenMeldung.config(text='Bestanden')
     else:
         bestandenMeldung.config(text='Nicht Bestanden')
+        
+    return str(format(endnote, '.1f'))
+
 
 def zufalls_endnote_berechnen():
     ap1Eintrag.delete(0, "end")
