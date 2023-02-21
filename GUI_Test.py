@@ -4,8 +4,8 @@ from tkinter import *
 from tkinter import ttk
 from datetime import datetime
 
-#import fpdf
-#from fpdf import FPDF
+import fpdf
+from fpdf import FPDF
 from datetime import date
 import os
 from os.path import exists
@@ -228,7 +228,7 @@ def projektBerechnen():
 
     endergebnisProjekt = ((zwischenErgebnisDokumentation * 0.5) + (zwischenErgebnisPraesentation * 0.5))
 
-    planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
+    #planUmsErgebnis.config(text=str(format(endergebnisProjekt, '.1f')))
 
     return endergebnisProjekt
 
@@ -384,7 +384,7 @@ dateEntry = Entry(tab1, text="", relief='solid', justify='center')
 dateEntry.insert(0, datetime.today().strftime('%d.%m.%Y'))
 dateEntry.place(x=1120, y=130, height=30, width=120)
 
-pdfBtn = Button(tab1, text="in PDF speichern", borderwidth=1, relief='solid')
+pdfBtn = Button(tab1, text="in PDF speichern", borderwidth=1, relief='solid', command=speichern)
 pdfBtn.place(x=1010, y=170, height=30, width=100)
 
 
