@@ -15,7 +15,7 @@ def speichern():
 
     def KommentareFormatieren(kommentar):
         #knapp hundert 90-95?
-        return kommentar[:100]
+        return kommentar[:90]
 
     def PunkteAusgabeFormatieren(zahl):
         formatierteZahl = ""
@@ -57,7 +57,7 @@ def speichern():
     fontsizeNewLine = 2
     tab1 = "\t\t\t\t\t\t\t\t\t\t\t\t"
     tab2 = "\t\t"
-    tab3 = 2*tab1 + tab2
+    tab3 = 2*tab1 + 4*tab2
 
     #Variablen Person und Datum TEMPORÄR!!!
     datum = str(date.today()).split("-")
@@ -69,18 +69,19 @@ def speichern():
     version = "V_082"
 
     #Variablen (Zwischen-) Noten TEMPÖRÄR!!! bisherige bezeihcnungen
-    ergebnisAP1 = ap1Eintrag.get()
-    ergebisPlanEintrag = planEintrag.get()
-    ergebnisEntwEintrag = entwEintrag.get()
-    ergebnisWirtsEintrag = wirtsEintrag.get()
+    ergebnisAP1 = float(ap1Eintrag.get())
+    ergebisPlanEintrag = float(planEintrag.get())
+    ergebnisEntwEintrag = float(entwEintrag.get())
+    ergebnisWirtsEintrag = float(wirtsEintrag.get())
 
-    ergebnisGestaltung = gestEintrag.get()
-    ergebnisKonkretisierung = dPunkte2.get()
-    ergebnisBeschreibung = dPunkte3.get()
-    ergebnisDarstellung = dPunkte4.get()
+    ergebnisGestaltung = str(float(gestEintrag.get()) + float(gestKoPunkte.get()))
+    ergebnisKonkretisierung = str(float(dPunkte2.get()) + float(konkKomPunkte.get()))
+    ergebnisBeschreibung = str(float(dPunkte3.get()) + float(beschKomPunkte.get())) 
+    ergebnisDarstellung = str(float(dPunkte4.get()) + float(darstKomPunkte.get())) 
 
-    ergebnisAufbau = aufbKomPunkte.get()
-    ergebnisPraesentation = praeKomPunkte.get()
+    ergebnisAufbau = str(float(aufbEingabe.get()) + float(aufbKomPunkte.get()))
+    ergebnisPraesentation = str(float(praePunkte3.get()) + float(praeKomPunkte.get()))
+
 
     #endnote = endnote.get()
     endnote = endnote_berechnen()
@@ -91,6 +92,7 @@ def speichern():
     ergebnisDarstellungKommentar = darstKomment.get() 
     ergebnisAufbauKommentar = aufbKomment.get()
     ergebnisPraesentationKommentar = praeTechKomment.get() 
+
 
     name_x = name.split(" ");
     nameUnderscore = ""
@@ -285,33 +287,48 @@ def endnote_berechnen():
 
     return str(format(endnote, '.1f'))
 
+def delete():
+    ap1Eintrag.delete(0, "end")
+    planEintrag.delete(0, "end")
+    entwEintrag.delete(0, "end")
+    wirtsEintrag.delete(0, "end")
+    gestEintrag.delete(0, "end")
+    dPunkte2.delete(0, "end")
+    dPunkte2.delete(0, "end")
+    dPunkte3.delete(0, "end")
+    dPunkte4.delete(0, "end")
+    aufbEingabe.delete(0, "end")
+    praePunkte3.delete(0, "end")
+
+def deleteAll():
+    delete()
+    ap1Eintrag.insert(0, "0")
+    planEintrag.insert(0, "0")
+    entwEintrag.insert(0, "0")
+    wirtsEintrag.insert(0, "0")
+    gestEintrag.insert(0, "0")
+    dPunkte2.insert(0, "0")
+    dPunkte3.insert(0, "0")
+    dPunkte4.insert(0, "0")
+    aufbEingabe.insert(0, "0")
+    praePunkte3.insert(0, "0")
+    nameEntry.delete(0,"end")
+    idEntry.delete(0,"end")
 
 
 def zufalls_endnote_berechnen():
-    ap1Eintrag.delete(0, "end")
+    delete()
     ap1Eintrag.insert(0, str(random.randint(0,100)))
-    planEintrag.delete(0, "end")
     planEintrag.insert(0, str(random.randint(0,100)))
-    entwEintrag.delete(0, "end")
     entwEintrag.insert(0, str(random.randint(0,100)))
-    wirtsEintrag.delete(0, "end")
     wirtsEintrag.insert(0, str(random.randint(0,100)))
-    gestEintrag.delete(0, "end")
     gestEintrag.insert(0, str(random.randint(0,100)))
-    dPunkte2.delete(0, "end")
     dPunkte2.insert(0, str(random.randint(0,100)))
-    dPunkte3.delete(0, "end")
     dPunkte3.insert(0, str(random.randint(0,100)))
-    dPunkte4.delete(0, "end")
     dPunkte4.insert(0, str(random.randint(0,100)))
-    aufbEingabe.delete(0, "end")
     aufbEingabe.insert(0, str(random.randint(0,100)))
-    praePunkte3.delete(0, "end")
     praePunkte3.insert(0, str(random.randint(0,100)))
-    
-    
-    
-
+    endnote_berechnen()
 
 
 #Fenster erstellen
@@ -414,6 +431,10 @@ schrifButton.place()
 #Exit
 exitButton = Button(tab1, borderwidth=1, text='Schließen', command=mainwindow.destroy, font=('Arial', 10), relief='solid')
 exitButton.place(x=1140, y=170, height=30, width=100)
+
+#Enfernen des Inhals
+clearButton = Button(tab1, borderwidth=1, text='Formular leeren', command=deleteAll, font=('Arial', 10), relief='solid')
+clearButton.place(x=1010, y=210, height=30, width=230)
 
 #-----------------------------------------------------------------------------------------------
 #TEIL1
