@@ -551,7 +551,7 @@ praeFachProzent.place(x=970, y=60, height=30, width=30)
 
 #Beschreibung 
 
-dokuGest= Label(tab1, text='Gestaltung Projektbericht \n(aeussere Form)', borderwidth=1, relief='solid', font=('Arial', 10))
+dokuGest= Label(tab1, text='Gestaltung Projektbericht \n(äußere Form)', borderwidth=1, relief='solid', font=('Arial', 10))
 dokuGest.place(x=510, y=100, height=30, width=200)
 
 dokuKonkr = Label(tab1, text='Konkretisierung des Auftrages, der \nAusgangssituation & des Projektumfelds', borderwidth=1, relief='solid', font=('Arial', 8))
